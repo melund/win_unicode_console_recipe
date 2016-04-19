@@ -1,0 +1,27 @@
+package:
+  name: win_unicode_console
+  version: "0.4"
+  #version: {{ environ.get('GIT_DESCRIBE_TAG','0.0.0') }}
+
+source:
+    fn: win_unicode_console-0.4.zip
+    url: https://pypi.python.org/packages/source/w/win_unicode_console/win_unicode_console-0.4.zip
+    md5: bcb496cb4353e5b3e57893694a9c840c
+
+build:
+  script: python setup.py install
+  number: 0
+  #number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+
+about:
+  home: https://github.com/Drekin/win-unicode-console
+  summary: A Python package to enable Unicode input and display when running Python from Windows console.
+
+

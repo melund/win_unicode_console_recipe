@@ -1,0 +1,22 @@
+package: win_unicode_console
+
+platform: 
+ - linux-64
+
+engine:
+ - python=3.4
+ - python=3.5
+
+script:
+  - conda build -c conda-forge recipe
+
+after_success:
+   - conda convert -p win-64 /opt/miniconda/conda-bld/linux-64/win_unicode_console*.tar.bz2 -o /opt/miniconda/conda-bld
+   - conda convert -p win-32 /opt/miniconda/conda-bld/linux-64/win_unicode_console*.tar.bz2 -o /opt/miniconda/conda-bld
+   
+after_failure:
+   - echo "Build failed!"
+
+build_targets:
+   - /opt/miniconda/conda-bld/win-32/*.tar.bz2
+   - /opt/miniconda/conda-bld/win-64/*.tar.bz2
